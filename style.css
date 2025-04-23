@@ -1,106 +1,72 @@
-/* General Styles */
+/* Base styles */
 body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+  background-color: #74c69d;
+  color: white;
 }
 
 main {
-    display: flex; /* Enable flexbox for main container */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    padding: 1em;
-    box-sizing: border-box; /* Ensure padding is inside the element's width */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
 }
 
-section {
-    background-color: #fff;
-    margin-bottom: 1em;
-    padding: 1em;
-    box-sizing: border-box;
-    border-radius: 5px;
+.layer {
+  background-color: #f1f1f1;
+  padding: 1rem;
+  text-align: center;
 }
 
-h2 {
-    color: #333;
-    margin-top: 0; /* Remove default top margin for better spacing */
+.layer img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
 }
 
-p {
-    line-height: 1.5;
-    margin-bottom: 1em; /* Add some space between paragraphs */
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-/* Screen width <= 40em (640px) */
+/* screen width <= 40em (640px) */
 @media screen and (max-width: 40em) {
-    main {
-        flex-direction: column; /* Stack sections vertically */
-    }
+  main {
+    flex-direction: column;
+  }
 
-    section {
-        width: 100%;
-        margin-right: 0; /* Remove any potential horizontal margin */
-    }
+  .layer {
+    width: 100%;
+    padding: 1rem;
+  }
 
-    p, h2 {
-        padding-left: 0.5em; /* Add a little internal spacing from the left */
-        padding-right: 0.5em; /* Add a little internal spacing from the right */
-    }
-
-    img {
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  body {
+    padding: 0.5rem;
+  }
 }
 
-/* Screen width <= 100em (1600px) */
+/* screen width <= 100em (1600px) */
 @media screen and (min-width: 40.01em) and (max-width: 100em) {
-    section {
-        width: calc(50% - 1em); /* Two columns with a small gap */
-        margin-right: 1em;
-    }
+  .layer {
+    flex: 0 0 48%;
+  }
 
-    /* Ensure the second item in each row doesn't have right margin */
-    section:nth-child(2n) {
-        margin-right: 0;
-    }
+  main {
+    justify-content: space-between;
+  }
 
-    /* Make the third and subsequent items take full width */
-    section:nth-child(n+3) {
-        width: calc(100% - 1em);
-        margin-right: 0;
-    }
-
-    img {
-        max-width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  /* Make the third layer full width */
+  .layer:nth-child(3) {
+    flex: 0 0 100%;
+  }
 }
 
-/* Screen width > 100em (1600px) */
+/* screen width > 100em (1600px+) */
 @media screen and (min-width: 100.01em) {
-    section {
-        width: calc(33.33% - 1.33em); /* Three columns with gaps */
-        margin-right: 2em;
-    }
-
-    /* Remove right margin from the last item in each row of three */
-    section:nth-child(3n) {
-        margin-right: 0;
-    }
-
-    img {
-        max-width: 70%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .layer {
+    flex: 0 0 32%;
+  }
 }
