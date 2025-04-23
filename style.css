@@ -1,121 +1,106 @@
-/* General Styles (you can add your existing Module 3 styles here) */
+/* General Styles */
 body {
-    font-family: sans-serif; /* Example general style */
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Example general style */
+    background-color: #f4f4f4;
 }
 
 main {
-    /* Layout will be handled by media queries */
+    display: flex; /* Enable flexbox for main container */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    padding: 1em;
+    box-sizing: border-box; /* Ensure padding is inside the element's width */
 }
 
 section {
-    background-color: #fff; /* Example general style */
-    margin-bottom: 1em; /* Default margin */
+    background-color: #fff;
+    margin-bottom: 1em;
     padding: 1em;
     box-sizing: border-box;
-    border-radius: 5px; /* Example general style */
+    border-radius: 5px;
 }
 
 h2 {
-    color: #333; /* Example general style */
+    color: #333;
+    margin-top: 0; /* Remove default top margin for better spacing */
 }
 
 p {
-    line-height: 1.5; /* Example general style */
+    line-height: 1.5;
+    margin-bottom: 1em; /* Add some space between paragraphs */
 }
 
 img {
-    max-width: 100%; /* Make images responsive within their container by default */
+    max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 0.5em; /* Add some space below images */
+    margin-bottom: 0.5em;
 }
 
-/* Screen width <= 40em */
+/* Screen width <= 40em (640px) */
 @media screen and (max-width: 40em) {
     main {
-        display: flex;
-        flex-direction: column; /* Layers stack vertically */
-        padding: 1em;
+        flex-direction: column; /* Stack sections vertically */
     }
 
     section {
-        width: 100%; /* Each section takes full width */
-        margin-bottom: 1em; /* Add space between sections */
-        padding: 1em; /* Add padding within each section */
+        width: 100%;
+        margin-right: 0; /* Remove any potential horizontal margin */
+    }
+
+    p, h2 {
+        padding-left: 0.5em; /* Add a little internal spacing from the left */
+        padding-right: 0.5em; /* Add a little internal spacing from the right */
     }
 
     img {
-        max-width: 90%; /* Adjust image size as needed */
-        margin: 0 auto 1em; /* Center the image and add bottom margin */
-    }
-
-    p {
-        padding: 0 1em; /* Ensure text doesn't touch the border */
-    }
-
-    h2 {
-        padding: 0 1em; /* Ensure text doesn't touch the border */
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
-/* Screen width <= 100em */
+/* Screen width <= 100em (1600px) */
 @media screen and (min-width: 40.01em) and (max-width: 100em) {
-    main {
-        display: flex;
-        flex-direction: row wrap; /* Two layers horizontal, then wrap */
-        padding: 1em;
-    }
-
     section {
-        margin-bottom: 1em; /* Add space between sections */
-        padding: 1em;
+        width: calc(50% - 1em); /* Two columns with a small gap */
+        margin-right: 1em;
     }
 
-    /* First two sections take approximately 50% width */
-    section:nth-child(1),
-    section:nth-child(2) {
-        width: calc(50% - 2em); /* Adjust for margin/padding */
+    /* Ensure the second item in each row doesn't have right margin */
+    section:nth-child(2n) {
+        margin-right: 0;
     }
 
-    /* The third and subsequent sections take full width */
-    section:nth-child(3),
-    section:nth-child(n+4) {
-        width: calc(100% - 2em); /* Adjust for margin/padding */
-    }
-
-    img {
-        max-width: 80%; /* Adjust image size */
-        margin: 0 auto 1em;
-    }
-
-    /* Add padding and margin to text as needed */
-}
-
-/* Screen width > 100em */
-@media screen and (min-width: 100.01em) {
-    main {
-        display: flex;
-        padding: 1em;
-    }
-
-    section {
-        width: calc(33.33% - 2em); /* Approximately one third width */
-        margin-right: 2em; /* Add space between sections */
-        padding: 1em;
-    }
-
-    /* Remove margin from the last section */
-    section:last-child {
+    /* Make the third and subsequent items take full width */
+    section:nth-child(n+3) {
+        width: calc(100% - 1em);
         margin-right: 0;
     }
 
     img {
-        max-width: 70%; /* Adjust image size */
-        margin: 0 auto 1em;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Screen width > 100em (1600px) */
+@media screen and (min-width: 100.01em) {
+    section {
+        width: calc(33.33% - 1.33em); /* Three columns with gaps */
+        margin-right: 2em;
     }
 
-    /* Add padding and margin to text as needed */
+    /* Remove right margin from the last item in each row of three */
+    section:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    img {
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
