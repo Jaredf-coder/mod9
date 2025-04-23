@@ -18,6 +18,7 @@ main {
   flex-wrap: wrap;
   padding: 1rem;
   gap: 1rem;
+  justify-content: space-between;
 }
 
 .layer {
@@ -26,6 +27,8 @@ main {
   text-align: left;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex: 0 0 32%; /* default for wide screens */
+  box-sizing: border-box;
 }
 
 .layer img {
@@ -42,8 +45,7 @@ main {
   }
 
   .layer {
-    width: 100%;
-    padding: 1rem;
+    flex: 0 0 100%;
   }
 
   body {
@@ -55,10 +57,6 @@ main {
 @media screen and (min-width: 40.01em) and (max-width: 100em) {
   .layer {
     flex: 0 0 48%;
-  }
-
-  main {
-    justify-content: space-between;
   }
 
   /* Make the third layer full width */
